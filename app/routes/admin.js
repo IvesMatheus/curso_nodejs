@@ -10,9 +10,9 @@ module.exports = function(application){
 		// recupera conexão como banco de dados
 		var connection = application.config.dbConnection();
 		//recupera model que possui métodos de acesso a BD
-		var noticiasModel = application.app.models.noticiasModel;
+		var noticiasModel = new application.app.models.NoticiasDAO(connection);
 
-		noticiasModel.salvarNoticia(noticia, connection, function(error, result){
+		noticiasModel.salvarNoticia(noticia, function(error, result){
 			// método redireciona pra outra página do projeto.
 			// Assim evita de ao usuário clicar em F5, reenvie o formulário,
 			// fazendo uma nova inserção no BD
